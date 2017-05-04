@@ -30,6 +30,31 @@ app.use(bodyParser.json());
 
 app.use('/', require('./routes'));
 
+app.get('/', function(req, res) {
+  res.send('helloooo')
+})
+
+app.post('/api/getimg', function(req, res) {
+  superagent
+    .post('http://www.dinsta.com/photos/')
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .send({
+      url: req.body.url
+    })
+    .end(function(err, resp) {
+      if (err) {
+        throw err
+      }
+
+
+      var $ = cheerio.load(resp.text)
+
+      res.json({
+        url: $('img').attr('src')
+      })
+    })
+})
+
 // 打印异常日志
 process.on('uncaughtException', error => {
     console.log(error);
