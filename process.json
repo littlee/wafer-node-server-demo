@@ -1,5 +1,5 @@
 {
-    "name": "weapp",
+    "name": "dajiba",
     "script": "app.js",
     "cwd": "./",
     "exec_mode": "fork",
