@@ -5,6 +5,8 @@ require('./setup-qcloud-sdk');
 
 const http = require('http');
 const express = require('express');
+const superagent = require('superagent');
+const cheerio = require('cheerio');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const config = require('./config');
